@@ -1,10 +1,13 @@
-package br.com.uniapp.auth;
+package br.com.uniapp.service;
 
 import br.com.uniapp.Exception.bundle.AuthenticationAppException;
+import br.com.uniapp.Exception.bundle.UniException;
+import br.com.uniapp.model.AuthenticationRequest;
+import br.com.uniapp.model.AuthenticationResponse;
+import br.com.uniapp.model.RegisterRequest;
 import br.com.uniapp.model.Role;
 import br.com.uniapp.model.User;
 import br.com.uniapp.repository.UserRepository;
-import br.com.uniapp.service.JwtService;
 import br.com.uniapp.utils.GeneralMessages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +25,11 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest reuqest) {
+    public AuthenticationResponse register(RegisterRequest reuqest) throws UniException {
+        var email = userRepository.findByEmail(reuqest.getEmail());
+        if(email.isPresent()){
+            throw new AuthenticationAppException(GeneralMessages.EMAIL_ALREADY_REGISTERED);
+        }
         var user = User.builder()
                 .firstName(reuqest.getFirstName())
                 .lastName(reuqest.getLastName())
@@ -37,7 +44,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest reuqest) throws Exception {
+    public AuthenticationResponse authenticate(AuthenticationRequest reuqest) throws UniException {
         var user = userRepository.findByEmail(reuqest.getEmail());
         if(user.isEmpty()){
             throw new AuthenticationAppException(GeneralMessages.EMAIL_NOT_FOUND);

@@ -3,7 +3,6 @@ package br.com.uniapp.model.dto;
 import br.com.uniapp.model.enums.FrequentChurch;
 import br.com.uniapp.model.enums.Sex;
 import br.com.uniapp.model.enums.WeekDays;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

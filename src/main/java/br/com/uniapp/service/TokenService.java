@@ -3,7 +3,6 @@ package br.com.uniapp.service;
 import br.com.uniapp.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
 import java.util.Date;
 
 public class TokenService {

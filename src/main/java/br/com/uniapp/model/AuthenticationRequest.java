@@ -1,4 +1,4 @@
-package br.com.uniapp.auth;
+package br.com.uniapp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

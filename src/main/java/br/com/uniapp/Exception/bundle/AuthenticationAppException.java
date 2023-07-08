@@ -1,10 +1,8 @@
 package br.com.uniapp.Exception.bundle;
 
-public class AuthenticationAppException extends Exception {
+public class AuthenticationAppException extends UniException {
 
-    private static final long serialVersionUID = 1L;
-
-    public AuthenticationAppException(String message){
+    public AuthenticationAppException(String message) {
         super(message);
     }
 }
