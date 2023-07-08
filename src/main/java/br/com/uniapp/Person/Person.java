@@ -28,9 +28,12 @@ public class Person {
     private String phone;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private Sex sex;
 
+    @Enumerated(EnumType.STRING)
     private FrequentChurch frequentChurch;
 
+    @Enumerated(EnumType.STRING)
     private WeekDays avaliableWeekDay;
 }

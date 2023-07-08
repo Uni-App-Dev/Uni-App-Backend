@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "usersLogin")
+@Table(name = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +23,6 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-
     private String firstName;
     private String lastName;
     private String email;
