@@ -1,6 +1,6 @@
 package br.com.uniapp.User;
 
-import br.com.uniapp.Security.Role;
+import br.com.uniapp.Security.model.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

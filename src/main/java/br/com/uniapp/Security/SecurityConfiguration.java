@@ -25,6 +25,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
                 //.requestMatchers(HttpMethod.GET,"/person").hasAuthority("USER")
+                .requestMatchers("/user").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().accessDeniedHandler(new RestAccessDeniedHandler()).authenticationEntryPoint(new RestAuthenticationEntryPoint())

@@ -1,4 +1,4 @@
-package br.com.uniapp.Security;
+package br.com.uniapp.Security.model;
 
 public enum Role {
 

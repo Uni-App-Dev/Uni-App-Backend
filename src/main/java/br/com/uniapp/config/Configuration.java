@@ -1,6 +1,6 @@
 package br.com.uniapp.config;
 
-import br.com.uniapp.repository.UserRepository;
+import br.com.uniapp.User.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

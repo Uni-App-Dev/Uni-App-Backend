@@ -14,25 +14,25 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    UserRepository repository;
+    UserRepository userRepository;
 
     @Autowired
     private ModelMapper modelMapper;
 
     public Page<UserDto> listAll(Pageable pageable) {
-        return repository.findAll(pageable)
+        return userRepository.findAll(pageable)
                 .map(p -> modelMapper.map(p, UserDto.class));
     }
 
     public UserDto listById(Long id) {
-        Optional<User> optional = repository.findById(id);
+        Optional<User> optional = userRepository.findById(id);
 
         return modelMapper.map(optional.get(), UserDto.class);
     }
 
     public UserDto savePerson(UserDto dto) {
         User person = modelMapper.map(dto, User.class);
-        repository.save(person);
+        userRepository.save(person);
         return modelMapper.map(person, UserDto.class);
     }
 }

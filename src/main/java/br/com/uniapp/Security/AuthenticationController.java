@@ -1,6 +1,9 @@
 package br.com.uniapp.Security;
 
 import br.com.uniapp.Exception.bundle.UniException;
+import br.com.uniapp.Security.model.AuthenticationRequest;
+import br.com.uniapp.Security.model.AuthenticationResponse;
+import br.com.uniapp.Security.model.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

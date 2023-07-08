@@ -1,7 +1,5 @@
 package br.com.uniapp.Person;
 
-import br.com.uniapp.Person.PersonDto;
-import br.com.uniapp.Person.PersonService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springdoc.core.annotations.ParameterObject;
