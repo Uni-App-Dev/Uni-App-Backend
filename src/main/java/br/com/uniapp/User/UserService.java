@@ -15,7 +15,6 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     private ModelMapper modelMapper;
 
@@ -30,9 +29,9 @@ public class UserService {
         return modelMapper.map(optional.get(), UserDto.class);
     }
 
-    public UserDto savePerson(UserDto dto) {
-        User person = modelMapper.map(dto, User.class);
-        userRepository.save(person);
-        return modelMapper.map(person, UserDto.class);
+    public UserDto saveUser(UserDto dto) {
+        User user = modelMapper.map(dto, User.class);
+        userRepository.save(user);
+        return modelMapper.map(user, UserDto.class);
     }
 }

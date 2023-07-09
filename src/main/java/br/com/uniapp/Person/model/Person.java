@@ -1,10 +1,11 @@
-package br.com.uniapp.Person;
+package br.com.uniapp.Person.model;
 
 import br.com.uniapp.Enums.FrequentChurch;
 import br.com.uniapp.Enums.Sex;
 import br.com.uniapp.Enums.WeekDays;
+import br.com.uniapp.User.User;
+import br.com.uniapp.smallGroup.model.SmallGroup;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,10 +22,10 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
 
-    @NotBlank
+    @NotNull
     private String name;
 
-    @NotBlank
+    @NotNull
     private String phone;
 
     @NotNull
@@ -36,4 +37,15 @@ public class Person {
 
     @Enumerated(EnumType.STRING)
     private WeekDays avaliableWeekDay;
+
+    @OneToOne(mappedBy = "person")
+    private User user;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "small_group_id")
+    private SmallGroup smallGroup;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "small_group_lead_id")
+    private SmallGroup smallGroupLead;
 }

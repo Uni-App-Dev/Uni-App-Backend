@@ -31,8 +31,7 @@ public class AuthenticationService {
             throw new AuthenticationAppException(GeneralMessages.EMAIL_ALREADY_REGISTERED);
         }
         var user = User.builder()
-                .firstName(reuqest.getFirstName())
-                .lastName(reuqest.getLastName())
+                .person(reuqest.getPerson())
                 .email(reuqest.getEmail())
                 .password(passwordEncoder.encode(reuqest.getPassword()))
                 .role(Role.USER)

@@ -1,5 +1,6 @@
 package br.com.uniapp.Security.model;
 
+import br.com.uniapp.Person.model.Person;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegisterRequest {
 
-    private String firstName;
-    private String lastName;
+    private Person person;
     private String email;
     private String password;
 }

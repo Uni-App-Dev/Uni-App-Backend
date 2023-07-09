@@ -1,8 +1,7 @@
 package br.com.uniapp.Person;
 
-import br.com.uniapp.Person.Person;
-import br.com.uniapp.Person.PersonDto;
-import br.com.uniapp.Person.PersonRepository;
+import br.com.uniapp.Person.model.Person;
+import br.com.uniapp.Person.model.PersonDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
