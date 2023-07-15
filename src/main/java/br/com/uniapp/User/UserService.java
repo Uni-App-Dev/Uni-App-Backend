@@ -1,5 +1,11 @@
 package br.com.uniapp.User;
 
+import br.com.uniapp.Exception.bundle.EntityNotFoundException;
+import br.com.uniapp.Exception.bundle.UniException;
+import br.com.uniapp.User.model.User;
+import br.com.uniapp.User.model.UserDto;
+import br.com.uniapp.Utils.GeneralMessages;
+import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +23,7 @@ public class UserService {
     UserRepository userRepository;
     @Autowired
     private ModelMapper modelMapper;
+    private UserValidator userValidator;
 
     public Page<UserDto> listAll(Pageable pageable) {
         return userRepository.findAll(pageable)
@@ -29,9 +36,30 @@ public class UserService {
         return modelMapper.map(optional.get(), UserDto.class);
     }
 
-    public UserDto saveUser(UserDto dto) {
+    public UserDto createUser(UserDto dto) throws UniException {
         User user = modelMapper.map(dto, User.class);
-        userRepository.save(user);
+        try {
+            userValidator.validateFields(user);
+            userRepository.save(user);
+        } catch (ConstraintViolationException e) {
+            throw new UniException(e.getConstraintViolations().toString());
+        }
+
+        return modelMapper.map(user, UserDto.class);
+    }
+
+    public UserDto updateUser(UserDto dto) throws UniException {
+        User user = modelMapper.map(dto, User.class);
+        if(userRepository.findById(user.getId()).isEmpty()){
+            throw new EntityNotFoundException("Usuário" + GeneralMessages.ENTITY_NOT_FOUND);
+        }
+        try {
+            userValidator.validateFields(user);
+            userRepository.save(user);
+        } catch (ConstraintViolationException e) {
+            throw new UniException(e.getConstraintViolations().toString());
+        }
+
         return modelMapper.map(user, UserDto.class);
     }
 }

@@ -1,6 +1,9 @@
 package br.com.uniapp.config;
 
+import br.com.uniapp.Person.PersonValidator;
 import br.com.uniapp.User.UserRepository;
+import br.com.uniapp.User.UserValidator;
+import br.com.uniapp.smallGroup.SmallGroupValidator;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +25,18 @@ public class Configuration {
     @Bean
     public ModelMapper getModelMapper(){
         return new ModelMapper();
+    }
+    @Bean
+    public PersonValidator personValidator() {
+        return new PersonValidator();
+    }
+    @Bean
+    public SmallGroupValidator smallGroupValidator() {
+        return new SmallGroupValidator();
+    }
+    @Bean
+    public UserValidator userValidator() {
+        return new UserValidator();
     }
 
     @Bean

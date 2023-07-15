@@ -27,7 +27,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonDto> findById(@PathVariable @NotNull Long id){
+    public ResponseEntity<PersonDto> findById(@PathVariable @NotNull Long id) throws UniException {
         PersonDto person = personService.listById(id);
         return ResponseEntity.ok(person);
     }

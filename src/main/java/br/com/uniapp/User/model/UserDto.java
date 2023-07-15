@@ -1,4 +1,4 @@
-package br.com.uniapp.User;
+package br.com.uniapp.User.model;
 
 import br.com.uniapp.Security.model.Role;
 import lombok.AllArgsConstructor;

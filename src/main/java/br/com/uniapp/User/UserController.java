@@ -1,5 +1,7 @@
 package br.com.uniapp.User;
 
+import br.com.uniapp.Exception.bundle.UniException;
+import br.com.uniapp.User.model.UserDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springdoc.core.annotations.ParameterObject;
@@ -37,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> saveUser(@RequestBody @Valid UserDto user, UriComponentsBuilder uri) {
+    public ResponseEntity<UserDto> saveUser(@RequestBody @Valid UserDto user, UriComponentsBuilder uri) throws UniException {
         UserDto createdUser = userService.saveUser(user);
         URI address = uri.path("user/{id}").buildAndExpand(createdUser.getId()).toUri();
         return ResponseEntity.created(address).body(createdUser);

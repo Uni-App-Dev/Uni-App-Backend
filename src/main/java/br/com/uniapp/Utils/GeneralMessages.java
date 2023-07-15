@@ -9,4 +9,6 @@ public class GeneralMessages {
     public static final String ACCESS_DENIED = "Acesso negado.";
     public static final String PERSON_NOT_FIND = "Pessoa não encontrada";
     public static final String SMALL_GROUP_NOT_FOUND = "Pequeno grupo não encontrado";
+    public static final String ENTITY_NOT_FOUND = " não encontrado(a)";
+    public static final String EMPTY_FIELD = " não pode ser nulo(a)";
 }

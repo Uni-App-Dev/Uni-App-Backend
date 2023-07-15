@@ -1,5 +1,6 @@
 package br.com.uniapp.smallGroup;
 
+import br.com.uniapp.Exception.bundle.UniException;
 import br.com.uniapp.smallGroup.model.SmallGroupDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -33,14 +34,14 @@ public class SmallGroupController {
     }
 
     @PostMapping
-    public ResponseEntity<SmallGroupDto> createSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) {
+    public ResponseEntity<SmallGroupDto> createSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) throws UniException {
         SmallGroupDto createdSmallGroup = smallGroupService.createSmallGroup(smallGroupDto);
         URI address = uri.path("smallgroup/{id}").buildAndExpand(createdSmallGroup.getId()).toUri();
         return ResponseEntity.created(address).body(createdSmallGroup);
     }
 
     @PutMapping
-    public ResponseEntity<SmallGroupDto> updateSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) {
+    public ResponseEntity<SmallGroupDto> updateSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) throws UniException {
         SmallGroupDto updatedSmallGroup = smallGroupService.updateSmallGroup(smallGroupDto);
         URI address = uri.path("smallgroup/{id}").buildAndExpand(updatedSmallGroup.getId()).toUri();
         return ResponseEntity.created(address).body(updatedSmallGroup);

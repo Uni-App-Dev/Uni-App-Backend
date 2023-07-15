@@ -4,14 +4,12 @@ import br.com.uniapp.Enums.FrequentChurch;
 import br.com.uniapp.Enums.Sex;
 import br.com.uniapp.Enums.SmallGroupRole;
 import br.com.uniapp.Enums.WeekDays;
-import br.com.uniapp.User.User;
 import br.com.uniapp.smallGroup.model.SmallGroup;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name="person", uniqueConstraints = @UniqueConstraint(columnNames = "id"))

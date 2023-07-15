@@ -1,4 +1,4 @@
-package br.com.uniapp.Security;
+package br.com.uniapp.Security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

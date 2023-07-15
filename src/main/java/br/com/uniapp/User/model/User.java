@@ -1,4 +1,4 @@
-package br.com.uniapp.User;
+package br.com.uniapp.User.model;
 
 import br.com.uniapp.Person.model.Person;
 import br.com.uniapp.Security.model.Role;
@@ -31,13 +31,16 @@ public class User implements UserDetails {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @NotNull
     private String email;
 
+    @NotNull
     private String password;
 
     private String token;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private Role role;
 
     @Override

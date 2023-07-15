@@ -1,9 +1,12 @@
 package br.com.uniapp.smallGroup;
 
+import br.com.uniapp.Exception.bundle.EntityNotFoundException;
+import br.com.uniapp.Exception.bundle.UniException;
 import br.com.uniapp.Person.model.Person;
 import br.com.uniapp.Person.PersonRepository;
 import br.com.uniapp.Person.model.PersonDto;
 import br.com.uniapp.Person.model.PersonOutputDto;
+import br.com.uniapp.Utils.GeneralMessages;
 import br.com.uniapp.smallGroup.model.SmallGroup;
 import br.com.uniapp.smallGroup.model.SmallGroupDto;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +30,7 @@ public class SmallGroupService {
     PersonRepository personRepository;
     @Autowired
     ModelMapper modelMapper;
+    private SmallGroupValidator smallGroupValidator;
 
     public Page<SmallGroupDto> listAll(Pageable pageable) {
         Page<SmallGroupDto> smallGroupDtoList = smallGroupRepository.findAll(pageable).map(p -> modelMapper.map(p, SmallGroupDto.class));
@@ -42,14 +46,19 @@ public class SmallGroupService {
         return modelMapper.map(optional.get(), SmallGroupDto.class);
     }
 
-    public SmallGroupDto createSmallGroup(SmallGroupDto dto) {
+    public SmallGroupDto createSmallGroup(SmallGroupDto dto) throws UniException {
         SmallGroup smallGroup = modelMapper.map(dto, SmallGroup.class);
+        smallGroupValidator.validateFields(smallGroup);
         smallGroupRepository.save(smallGroup);
         return modelMapper.map(smallGroup, SmallGroupDto.class);
     }
 
-    public SmallGroupDto updateSmallGroup(SmallGroupDto dto) {
+    public SmallGroupDto updateSmallGroup(SmallGroupDto dto) throws UniException {
         SmallGroup smallGroup = modelMapper.map(dto, SmallGroup.class);
+        if(smallGroupRepository.findById(smallGroup.getId()).isEmpty()) {
+            throw new EntityNotFoundException("Pequeno grupo" + GeneralMessages.ENTITY_NOT_FOUND);
+        }
+        smallGroupValidator.validateFields(smallGroup);
         smallGroupRepository.save(smallGroup);
         return modelMapper.map(smallGroup, SmallGroupDto.class);
     }

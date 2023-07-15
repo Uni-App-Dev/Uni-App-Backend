@@ -1,5 +1,6 @@
 package br.com.uniapp.User;
 
+import br.com.uniapp.User.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;

@@ -1,6 +1,6 @@
-package br.com.uniapp.Security;
+package br.com.uniapp.Security.jwt;
 
-import br.com.uniapp.User.User;
+import br.com.uniapp.User.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
