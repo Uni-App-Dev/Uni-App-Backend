@@ -1,7 +1,9 @@
 package br.com.uniapp.User;
 
+import br.com.uniapp.Person.model.Person;
 import br.com.uniapp.Security.model.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,11 +25,18 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-    private String firstName;
-    private String lastName;
+
+    @NotNull
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     private String email;
+
     private String password;
+
     private String token;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

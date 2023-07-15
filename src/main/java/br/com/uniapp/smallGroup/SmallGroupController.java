@@ -1,5 +1,6 @@
-package br.com.uniapp.User;
+package br.com.uniapp.smallGroup;
 
+import br.com.uniapp.smallGroup.model.SmallGroupDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springdoc.core.annotations.ParameterObject;
@@ -19,27 +20,27 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/smallgroup")
+public class SmallGroupController {
 
     @Autowired
-    UserService userService;
+    SmallGroupService smallGroupService;
 
     @GetMapping
-    public Page<UserDto> listAll(@ParameterObject @PageableDefault(size = 10) Pageable pageable){
-        return userService.listAll(pageable);
+    public Page<SmallGroupDto> listAll(@ParameterObject @PageableDefault(size = 10) Pageable pageable){
+        return smallGroupService.listAll(pageable);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDto> findById(@PathVariable @NotNull Long id){
-        UserDto user = userService.listById(id);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<SmallGroupDto> findById(@PathVariable @NotNull Long id){
+        SmallGroupDto smallGroup = smallGroupService.listById(id);
+        return ResponseEntity.ok(smallGroup);
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> saveUser(@RequestBody @Valid UserDto user, UriComponentsBuilder uri) {
-        UserDto createdUser = userService.saveUser(user);
-        URI address = uri.path("user/{id}").buildAndExpand(createdUser.getId()).toUri();
-        return ResponseEntity.created(address).body(createdUser);
+    public ResponseEntity<SmallGroupDto> saveSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) {
+        SmallGroupDto createdSmallGroup = smallGroupService.saveSmallGroup(smallGroupDto);
+        URI address = uri.path("smallgroup/{id}").buildAndExpand(createdSmallGroup.getId()).toUri();
+        return ResponseEntity.created(address).body(createdSmallGroup);
     }
 }

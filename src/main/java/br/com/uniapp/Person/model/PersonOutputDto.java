@@ -1,8 +1,9 @@
-package br.com.uniapp.Person;
+package br.com.uniapp.Person.model;
 
 import br.com.uniapp.Enums.FrequentChurch;
 import br.com.uniapp.Enums.Sex;
 import br.com.uniapp.Enums.WeekDays;
+import br.com.uniapp.smallGroup.model.SmallGroup;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonDto {
+public class PersonOutputDto {
 
     private Long id;
     private String name;
