@@ -8,14 +8,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Collection;
+import java.util.List;
+
 @Transactional
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    @Modifying
-    @Query("update Person p set p.smallGroup = :smallGroup where p.id = :personId")
-    void bindSmallGroup(@Param("smallGroup") SmallGroup smallGroup, @Param("personId") Long personId);
-
-    @Modifying
-    @Query("update Person p set p.smallGroupLead = :smallGroup where p.id = :personId")
-    void bindSmallGroupLead(@Param("smallGroup") SmallGroup smallGroup, @Param("personId") Long personId);
+    Collection<Person> findBySmallGroupId(Long smallGroupId);
 }

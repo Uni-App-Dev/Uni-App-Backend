@@ -1,5 +1,6 @@
 package br.com.uniapp.Person;
 
+import br.com.uniapp.Exception.bundle.UniException;
 import br.com.uniapp.Person.model.PersonDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -32,9 +33,16 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<PersonDto> savePerson(@RequestBody @Valid PersonDto person, UriComponentsBuilder uri) {
-        PersonDto createdPerson = personService.savePerson(person);
+    public ResponseEntity<PersonDto> createPerson(@RequestBody @Valid PersonDto personDto, UriComponentsBuilder uri) throws UniException {
+        PersonDto createdPerson = personService.createPerson(personDto);
         URI address = uri.path("person/{id}").buildAndExpand(createdPerson.getId()).toUri();
         return ResponseEntity.created(address).body(createdPerson);
+    }
+
+    @PutMapping
+    public ResponseEntity<PersonDto> updatePerson(@RequestBody PersonDto personDto, UriComponentsBuilder uri) throws UniException {
+        PersonDto updatedPerson = personService.updatePerson(personDto);
+        URI addres = uri.path("person/{id}").buildAndExpand(updatedPerson.getId()).toUri();
+        return ResponseEntity.created(addres).body(updatedPerson);
     }
 }

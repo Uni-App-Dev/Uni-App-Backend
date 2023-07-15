@@ -9,12 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -38,9 +33,16 @@ public class SmallGroupController {
     }
 
     @PostMapping
-    public ResponseEntity<SmallGroupDto> saveSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) {
-        SmallGroupDto createdSmallGroup = smallGroupService.saveSmallGroup(smallGroupDto);
+    public ResponseEntity<SmallGroupDto> createSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) {
+        SmallGroupDto createdSmallGroup = smallGroupService.createSmallGroup(smallGroupDto);
         URI address = uri.path("smallgroup/{id}").buildAndExpand(createdSmallGroup.getId()).toUri();
         return ResponseEntity.created(address).body(createdSmallGroup);
+    }
+
+    @PutMapping
+    public ResponseEntity<SmallGroupDto> updateSmallGroup(@RequestBody @Valid SmallGroupDto smallGroupDto, UriComponentsBuilder uri) {
+        SmallGroupDto updatedSmallGroup = smallGroupService.updateSmallGroup(smallGroupDto);
+        URI address = uri.path("smallgroup/{id}").buildAndExpand(updatedSmallGroup.getId()).toUri();
+        return ResponseEntity.created(address).body(updatedSmallGroup);
     }
 }

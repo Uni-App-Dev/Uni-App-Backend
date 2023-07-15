@@ -45,10 +45,4 @@ public class SmallGroup {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
-    @NotNull
-    @OneToMany(mappedBy = "smallGroupLead")
-    private Collection<Person> leaders;
-
-    @OneToMany(mappedBy = "smallGroup")
-    private Collection<Person> members;
 }

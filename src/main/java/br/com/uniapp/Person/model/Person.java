@@ -2,6 +2,7 @@ package br.com.uniapp.Person.model;
 
 import br.com.uniapp.Enums.FrequentChurch;
 import br.com.uniapp.Enums.Sex;
+import br.com.uniapp.Enums.SmallGroupRole;
 import br.com.uniapp.Enums.WeekDays;
 import br.com.uniapp.User.User;
 import br.com.uniapp.smallGroup.model.SmallGroup;
@@ -10,6 +11,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name="person", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
@@ -38,14 +40,11 @@ public class Person {
     @Enumerated(EnumType.STRING)
     private WeekDays avaliableWeekDay;
 
-    @OneToOne(mappedBy = "person")
-    private User user;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "small_group_id")
     private SmallGroup smallGroup;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "small_group_lead_id")
-    private SmallGroup smallGroupLead;
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private SmallGroupRole smallGroupRole;
 }

@@ -6,15 +6,10 @@ create table person (
     frequent_church varchar(50) check (frequent_church in ('SIM','JA_FREQUENTOU','NUNCA_FREQUENTOU')),
     avaliable_week_day varchar(50) check (avaliable_week_day in ('SEGUNDA','TERCA','QUARTA','QUINTA')),
     small_group_id bigint,
-    small_group_lead_id bigint
+    small_group_role varchar(50) NOT NULL check (small_group_role in ('LIDER','MEMBRO','NAO_FREQUENTA')) default 'NAO_FREQUENTA'
 );
 
 alter table if exists person
        add constraint fk_person_small_group
        foreign key (small_group_id)
-       references small_group;
-
-alter table if exists person
-       add constraint fk_person_small_group_lead
-       foreign key (small_group_lead_id)
        references small_group;
