@@ -1,14 +1,13 @@
 package br.com.uniapp.smallGroup;
 
-import br.com.uniapp.Exception.bundle.EntityNotFoundException;
-import br.com.uniapp.Exception.bundle.UniException;
-import br.com.uniapp.Person.model.Person;
-import br.com.uniapp.Person.PersonRepository;
-import br.com.uniapp.Person.model.PersonDto;
-import br.com.uniapp.Person.model.PersonOutputDto;
-import br.com.uniapp.Utils.GeneralMessages;
+import br.com.uniapp.exception.bundle.EntityNotFoundException;
+import br.com.uniapp.exception.bundle.UniException;
+import br.com.uniapp.person.PersonRepository;
+import br.com.uniapp.person.model.PersonOutputDto;
+import br.com.uniapp.utils.GeneralMessages;
 import br.com.uniapp.smallGroup.model.SmallGroup;
 import br.com.uniapp.smallGroup.model.SmallGroupDto;
+import br.com.uniapp.validators.SmallGroupValidator;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 

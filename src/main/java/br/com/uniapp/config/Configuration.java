@@ -1,9 +1,9 @@
 package br.com.uniapp.config;
 
-import br.com.uniapp.Person.PersonValidator;
-import br.com.uniapp.User.UserRepository;
-import br.com.uniapp.User.UserValidator;
-import br.com.uniapp.smallGroup.SmallGroupValidator;
+import br.com.uniapp.validators.PersonValidator;
+import br.com.uniapp.user.UserRepository;
+import br.com.uniapp.validators.UserValidator;
+import br.com.uniapp.validators.SmallGroupValidator;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

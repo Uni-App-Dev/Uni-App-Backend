@@ -1,6 +1,6 @@
 package br.com.uniapp.smallGroup;
 
-import br.com.uniapp.Exception.bundle.UniException;
+import br.com.uniapp.exception.bundle.UniException;
 import br.com.uniapp.smallGroup.model.SmallGroupDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;

@@ -1,15 +1,13 @@
 package br.com.uniapp.smallGroup.model;
 
-import br.com.uniapp.Enums.Sex;
-import br.com.uniapp.Enums.WeekDays;
-import br.com.uniapp.Person.model.Person;
+import br.com.uniapp.enums.Sex;
+import br.com.uniapp.enums.WeekDays;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
@@ -18,7 +16,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
-import java.util.Collection;
 
 @Entity
 @Table(name="small_group", uniqueConstraints = @UniqueConstraint(columnNames = "id"))

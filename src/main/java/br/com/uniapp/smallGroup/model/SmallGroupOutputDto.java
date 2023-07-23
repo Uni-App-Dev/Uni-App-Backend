@@ -1,7 +1,7 @@
 package br.com.uniapp.smallGroup.model;
 
-import br.com.uniapp.Enums.Sex;
-import br.com.uniapp.Enums.WeekDays;
+import br.com.uniapp.enums.Sex;
+import br.com.uniapp.enums.WeekDays;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
