@@ -1,4 +1,4 @@
-FROM openjdk:17.0.2
-EXPOSE 8080
-ADD target/uni-app.jar uni-app.jar
-ENTRYPOINT ["java","-jar","uni-app.jar"]
+FROM openjdk:17-jdk-alpine
+ARG JAR_FILE=target/*.jar
+COPY ./target/uniapp-0.0.1.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
