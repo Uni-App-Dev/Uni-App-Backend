@@ -22,7 +22,7 @@ public class SecurityConfiguration {
     @SuppressWarnings("removal")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable().cors().and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
                 //.requestMatchers(HttpMethod.GET,"/person").hasAuthority("USER")

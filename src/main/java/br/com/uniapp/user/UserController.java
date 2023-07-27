@@ -40,7 +40,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDto> saveUser(@RequestBody @Valid UserDto user, UriComponentsBuilder uri) throws UniException {
-        UserDto createdUser = userService.saveUser(user);
+        UserDto createdUser = userService.createUser(user);
         URI address = uri.path("user/{id}").buildAndExpand(createdUser.getId()).toUri();
         return ResponseEntity.created(address).body(createdUser);
     }
